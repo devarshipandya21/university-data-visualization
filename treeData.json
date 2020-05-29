@@ -1,0 +1,230 @@
+{
+    "name": "CS Plan",
+    "children": [
+        {
+            "name": "Intro to Computing through Applications",
+            "children": [
+                {
+                    "name": "Concepts for Advanced Comp. Usage"
+                }
+            ]
+        },
+        {
+            "name": "Intro to Comp. Prog. 1",
+            "children": [
+                {
+                    "name": "Intro to Comp. Prog. 2",
+                    "children": [
+                        {
+                            "name": "Mang. Info. Sys.",
+                            "children": [
+                                {
+                                    "name": "Business Sys. Analysis"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Intro to Comp. Science 1",
+            "children": [
+                {
+                    "name": "Intro to Comp. Science 2",
+                    "children": [
+                        {
+                            "name": "Intro to Computational Maths"
+                        },
+                        {
+                            "name": "Intro to Comp. and Comp. Sys.",
+                            "children": [
+                                {
+                                    "name": "Networks and Distributed Comp. Sys."
+                                },
+                                {
+                                    "name": "Comp. Applications in Business DBs"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Algorithmic Prblm Solving",
+                            "children": [
+                                {
+                                    "name": "Numerical Computation",
+                                    "children": [
+                                        {
+                                            "name": "Computational Vision"
+                                        },
+                                        {
+                                            "name": "Numeric Comp. for Financial Modeling"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Intro to Symbolic Comp."
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Designing Functional Prog.",
+            "children": [
+                {
+                    "name": "Ele. Alg. Design and Data Abst.",
+                    "children": [
+                        {
+                            "name": "Data Types and Structures"
+                        },
+                        {
+                            "name": "Logic and Computation",
+                            "children": [
+                                {
+                                    "name": "Data Structures and Data Mang.",
+                                    "children": [
+                                        {
+                                            "name": "Principles of Prog. Languages"
+                                        },
+                                        {
+                                            "name": "Computational Digital Art Studio"
+                                        },
+                                        {
+                                            "name": "Algorithms",
+                                            "children": [
+                                                {
+                                                    "name": "Intro to Comp. Graphics"
+                                                },
+                                                {
+                                                    "name": "Intro to Artificial Intelligence"
+                                                },
+                                                {
+                                                    "name": "Statistical and Computational Foundations of ML"
+                                                },
+                                                {
+                                                    "name": "Computational Techn. in Biological Seq. Analysis"
+                                                },
+                                                {
+                                                    "name": "Intro to ML"
+                                                },
+                                                {
+                                                    "name": "Data-Intensive Distributed Computing"
+                                                },
+                                                {
+                                                    "name": "Algorithm Design and Analysis"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Operating Sys.",
+                                            "children": [
+                                                {
+                                                    "name": "Comp. Architecture"
+                                                },
+                                                {
+                                                    "name": "S/W Testing, Quality Assurance and Maint."
+                                                },
+                                                {
+                                                    "name": "S/W Design and Arch."
+                                                },
+                                                {
+                                                    "name": "S/W Requirements Spec. and Analysis"
+                                                },
+                                                {
+                                                    "name": "Compiler Construction"
+                                                },
+                                                {
+                                                    "name": "Concurrent and Parallel Prog."
+                                                },
+                                                {
+                                                    "name": "Real-Time Prog."
+                                                },
+                                                {
+                                                    "name": "Distributed Sys."
+                                                },
+                                                {
+                                                    "name": "Comp. Networks"
+                                                },
+                                                {
+                                                    "name": "Comp. Security and Privacy"
+                                                },
+                                                {
+                                                    "name": "Info. Sys. Mang."
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Intro to DB Mang.",
+                                            "children": [
+                                                {
+                                                    "name": "DB Sys. Impl."
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "The Social Implications of Computing"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Designing Functional Prog. (adv)",
+            "children": [
+                {
+                    "name": "Ele. Alg. Design and Data Abst. (adv)",
+                    "children": [
+                        {
+                            "name": "Object-Oriented S/W Dev.",
+                            "children": [
+                                {
+                                    "name": "Foundations of Sequential Prog.",
+                                    "children": [
+                                        {
+                                            "name": "Human-Comp. Interaction"
+                                        },
+                                        {
+                                            "name": "User Interfaces"
+                                        },
+                                        {
+                                            "name": "Intro to the Theory of Computing",
+                                            "children": [
+                                                {
+                                                    "name": "Formal Languages and Parsing"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Models of Computation"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Topics in Comp. Science"
+                                },
+                                {
+                                    "name": "Readings in Comp. Science"
+                                },
+                                {
+                                    "name": "Sys. Performance Eval."
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Comp. Org. and Design"
+                        },
+                        {
+                            "name": "Comp. Methods in Business"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

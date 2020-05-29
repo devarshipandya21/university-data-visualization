@@ -1,0 +1,440 @@
+<html>
+
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .gender {
+            position: absolute;
+            top: 60px;
+            left: 50px;
+        }
+
+        .faculty {
+            position: absolute;
+            top: 60px;
+            left: 600px;
+        }
+
+        .PageHead {
+            background-color: black;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            text-align: center;
+            height: 50px;
+        }
+
+        .donutSegment {
+            transition: ease;
+            transition-duration: 0.5s;
+        }
+
+        .donutSegment:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+
+        .btnGrp {
+            position: absolute;
+            top: 500px;
+            left: 300px;
+        }
+
+        .courseBtn {
+            background-color: white;
+            border: 2px solid grey;
+            color: black;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .courseBtn:hover {
+            background-color: orange;
+            color: white;
+            border: none;
+            transform: scale(0.9);
+        }
+
+        .tooltip-donut {
+            position: absolute;
+            text-align: center;
+            padding: .5rem;
+            background: #FFFFFF;
+            color: #313639;
+            border: 1px solid #313639;
+            border-radius: 8px;
+            pointer-events: none;
+            font-size: 1.2rem;
+        }
+
+        .navBtnGrp {
+            position: fixed;
+            left: 1000;
+            top: 380;
+        }
+
+        .navBtn {
+            background-color: white;
+            border: 2px solid grey;
+            color: black;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 8px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            margin: 5px;
+        }
+
+        .navBtn:hover {
+            background-color: green;
+            color: white;
+            border: none;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="PageHead">
+        <h1>University Visualization System</h1>
+    </div>
+
+    <!-----------------------------------RADIO BUTTONS------------------------------------->
+    <div class="btnGrp" data-toggle="button">
+        <input type="button" class="courseBtn" id="TotalBtn" value="Total">
+        <input type="button" class="courseBtn" id="BACSBtn" value="BACS">
+        <input type="button" class="courseBtn" id="BCSBtn" value="BCS">
+        <input type="button" class="courseBtn" id="MACSBtn" value="MACS">
+        <input type="button" class="courseBtn" id="MCSBtn" value="MCS">
+    </div>
+    <!-----------------------------------RADIO BUTTON ENDS---------------------------------->
+
+
+    <div class="navBtnGrp">
+        <button class="NavBtn" id="courses" onclick="location.href = 'courses.html';"><b>Courses</b>  <i
+                class="fa fa-arrow-right"></i></button>
+        <button class="NavBtn" id="registeredStud" onclick="location.href = 'registered_students.html';"><b>Registered
+            Students</b>  <i class="fa fa-arrow-right"></i></button>
+    </div>
+    <br><br>
+    <script>
+
+    </script>
+
+    <!-----------------------------------GENDER PIE------------------------------------------>
+    <script>
+        var width = 400, height = 300;
+        var colors = d3.scaleOrdinal(["orange", "#9BC53D", "#59A5D8", "#C3423F"]);
+        var svg = d3.select("body").append("svg")
+            .attr("width", width).attr("height", height)
+            .style("background", "white")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("class", "gender");
+
+        //Gender Data
+
+        var details1 = [{ key: "Male", value: 60 },
+        { key: "Female", value: 40 }];
+
+        var details2 = [{ key: "Male", value: 80 },
+        { key: "Female", value: 20 }];
+
+        var details3 = [{ key: "Male", value: 70 },
+        { key: "Female", value: 30 }];
+
+        var details4 = [{ key: "Male", value: 65 },
+        { key: "Female", value: 35 }];
+
+        var details5 = [{ key: "Male", value: 63 },
+        { key: "Female", value: 37 }];
+
+
+        //Faculty Data
+        var detailsFaculty1 = [{ key: "Professor", value: 43 },
+        { key: "Assistant Professor", value: 32 },
+        { key: "Associate Professor", value: 10 },
+        { key: "Lecturer", value: 15 }];
+
+        var detailsFaculty2 = [{ key: "Professor", value: 76 },
+        { key: "Assistant Professor", value: 14 },
+        { key: "Associate Professor", value: 5 },
+        { key: "Lecturer", value: 5 }];
+
+        var detailsFaculty3 = [{ key: "Professor", value: 25 },
+        { key: "Assistant Professor", value: 34 },
+        { key: "Associate Professor", value: 10 },
+        { key: "Lecturer", value: 6 }];
+
+        var detailsFaculty4 = [{ key: "Professor", value: 69 },
+        { key: "Assistant Professor", value: 45 },
+        { key: "Associate Professor", value: 21 },
+        { key: "Lecturer", value: 3 }];
+
+        var detailsFaculty5 = [{ key: "Professor", value: 53 },
+        { key: "Assistant Professor", value: 43 },
+        { key: "Associate Professor", value: 20 },
+        { key: "Lecturer", value: 15 }];
+
+        var data = d3.pie().sort(null)
+            .value(function (d) { return d.value })(details1);
+
+        var segments = d3.arc()
+            .innerRadius(70)
+            .outerRadius(100)
+            .padAngle(.05)
+            .padRadius(50);
+
+        var sections = svg.append("g")
+            .attr("transform", "translate(170, 150)")
+            .classed("gender_g", true)
+            .selectAll("path").data(data);
+
+        sections.enter().append("path").attr("d", segments)
+            .attr("fill", function (d) { return colors(d.data.value); })
+            .attr("class", "donutSegment")
+            .on('mouseover', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '.85');
+                //Makes the new div appear on hover:
+                div.transition()
+                    .duration(50)
+                    .style("opacity", 1);
+
+                div.html(d.value)
+                    .style("left", (d3.event.pageX + 10) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+
+                let num = (Math.round((d.data.value)).toString() + "%");
+                div.html(num)
+                    .style("left", (d3.event.pageX + 10) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                //Makes the new div disappear:
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
+
+        var legends = svg.append("g")
+            .attr("transform", "translate(300, 30)")
+            .selectAll(".legends").data(data);
+        var legend = legends.enter().append("g").classed("legends", true)
+            .attr("transform", function (d, i) {
+                return "translate(0," + (i + 1) * 37 + ")";
+            });
+        legend.append("rect").attr("width", 20).attr("height", 20).attr("fill",
+            function (d) { return colors(d.data.value); });
+        legend.append("text").text(function (d) { return d.data.key; })
+            .attr("x", 30)
+            .attr("y", 15)
+            .style("font-size", 11)
+            .style("font-family", "sans-serif");
+
+        var genderText = svg.append("text")
+            .attr("x", 120)
+            .attr("y", 290)
+            .text("GENDER")
+            .style("font-size", "24px");
+
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip-donut")
+            .style("opacity", 0);
+
+        // Button 1 click (Total)
+        var Btn1 = document.getElementById("TotalBtn");
+        Btn1.onclick = function () {
+            var data = d3.pie().sort(null)
+                .value(function (d) { return d.value })(details1);
+            var fData = d3.pie().sort(null)
+                .value(function (d) { return d.value })(detailsFaculty1);
+            change(data, fData);
+        }
+
+        var Btn2 = document.getElementById("BACSBtn");
+        Btn2.onclick = function () {
+            var data = d3.pie().sort(null)
+                .value(function (d) { return d.value })(details2);
+            var fData = d3.pie().sort(null)
+                .value(function (d) { return d.value })(detailsFaculty2);
+            change(data, fData);
+        }
+
+        var Btn3 = document.getElementById("BCSBtn");
+        Btn3.onclick = function () {
+            var data = d3.pie().sort(null)
+                .value(function (d) { return d.value })(details3);
+            var fData = d3.pie().sort(null)
+                .value(function (d) { return d.value })(detailsFaculty3);
+            change(data, fData);
+        }
+
+        var Btn4 = document.getElementById("MACSBtn");
+        Btn4.onclick = function () {
+            var data = d3.pie().sort(null)
+                .value(function (d) { return d.value })(details4);
+            var fData = d3.pie().sort(null)
+                .value(function (d) { return d.value })(detailsFaculty4);
+            change(data, fData);
+        }
+
+        var Btn5 = document.getElementById("MCSBtn");
+        Btn5.onclick = function () {
+            var data = d3.pie().sort(null)
+                .value(function (d) { return d.value })(details5);
+            var fData = d3.pie().sort(null)
+                .value(function (d) { return d.value })(detailsFaculty5);
+            change(data, fData);
+        }
+
+        function change(data, fData) {
+            var sections = d3.selectAll("g.gender_g").selectAll("path")
+                .data(data);
+
+            var arc = d3.arc()
+                .innerRadius(70)
+                .outerRadius(100)
+                .padAngle(.05)
+                .padRadius(50);
+
+            sections.transition().duration(500).attr("d", arc)
+                .attr("fill", function (d, i) { return colors(i); })
+                .attr("class", "donutSegment");
+
+            //Faculty
+            var fSections = d3.selectAll("g.gfaculty").selectAll("path")
+                .data(fData);
+
+            var fArc = d3.arc()
+                .innerRadius(70)
+                .outerRadius(100)
+                .padAngle(.05)
+                .padRadius(50);
+
+            fSections.transition().duration(500).attr("d", fArc)
+                .attr("fill", function (d, i) { return colors(i); })
+                .attr("class", "donutSegment");
+
+        }
+
+
+    </script>
+    <!-----------------------------------GENDER PIE ENDS------------------------------------->
+
+    <!-----------------------------------FACULTY PIE------------------------------------------>
+    <script>
+        var width = 450, height = 300;
+        // var colors = d3.scaleOrdinal(["#D56734", "#FFE8BC", "#F6D576", "#FDBA47", "#F9A334", "#FC7E31"]);
+        //var colors = d3.scaleOrdinal(["#621257", "#B62B66", "#ED6863", "#FFA473"]);
+        var colors = d3.scaleOrdinal(["orange", "#9BC53D", "#59A5D8", "#C3423F"]);
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width).attr("height", height)
+            .style("background", "white")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("class", "faculty");
+
+        // var colors = d3.scaleOrdinal(["#D56734", "#FFE8BC", "#F6D576", "#FDBA47", "#F9A334", "#FC7E31"]);
+
+        var detailsFaculty = [{ key: "Professor", value: 43 },
+        { key: "Assistant Professor", value: 32 },
+        { key: "Associate Professor", value: 10 },
+        { key: "Lecturer", value: 15 }];
+
+
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip-donut")
+            .style("opacity", 0);
+
+        var data = d3.pie().sort(null)
+            .value(function (d) { return d.value })(detailsFaculty);
+
+        var segments = d3.arc()
+            .innerRadius(70)
+            .outerRadius(100)
+            .padAngle(.05)
+            .padRadius(50);
+
+        var sections = svg.append("g").classed("gFaculty", true)
+            .attr("transform", "translate(170, 150)")
+            .selectAll("path").data(data);
+
+        sections.enter().append("path").attr("d", segments)
+            .attr("fill", function (d) { return colors(d.data.value); })
+            .attr("class", "donutSegment")
+            .on('mouseover', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '.85');
+                //Makes the new div appear on hover:
+                div.transition()
+                    .duration(50)
+                    .style("opacity", 1);
+
+                div.html(d.value)
+                    .style("left", (d3.event.pageX + 10) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+
+                let num = (Math.round((d.data.value)).toString() + "%");
+                div.html(num)
+                    .style("left", (d3.event.pageX + 10) + "px")
+                    .style("top", (d3.event.pageY - 15) + "px");
+            })
+            .on('mouseout', function (d, i) {
+                d3.select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1');
+                //Makes the new div disappear:
+                div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            });
+
+        var legends = svg.append("g")
+            .attr("transform", "translate(320, 30)")
+            .selectAll(".legends").data(data);
+        var legend = legends.enter().append("g").classed("legends", true)
+            .attr("transform", function (d, i) {
+                return "translate(0," + (i + 1) * 37 + ")";
+            });
+        legend.append("rect").attr("width", 20).attr("height", 20).attr("fill",
+            function (d) { return colors(d.data.value); });
+        legend.append("text").text(function (d) { return d.data.key; })
+            .attr("x", 30)
+            .attr("y", 15)
+            .style("font-size", 11)
+            .style("font-family", "sans-serif");
+
+        var facultyText = svg.append("text")
+            .attr("x", 120)
+            .attr("y", 290)
+            .text("FACULTY")
+            .style("font-size", "24px");
+    </script>
+    <!-----------------------------------FACULTY PIE ENDS------------------------------------->
+
+</body>
+
+</html>

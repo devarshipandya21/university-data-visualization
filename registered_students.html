@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3-queue/3.0.4/d3-queue.min.js"></script>
+    <style>
+        html,
+        body,
+        #visual {
+            height: 100%;
+            margin: 50;
+        }
+
+        .PageHead {
+            background-color: black;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            text-align: center;
+            height: 50px;
+        }
+
+        .tooltip-bar {
+            position: absolute;
+            text-align: center;
+            padding: .5rem;
+            background: #FFFFFF;
+            color: #313639;
+            border: 1px solid #313639;
+            border-radius: 8px;
+            pointer-events: none;
+            font-size: 1.2rem;
+        }
+
+        .tooltip-donut {
+            position: absolute;
+            text-align: center;
+            padding: .5rem;
+            background: #FFFFFF;
+            color: #313639;
+            border: 1px solid #313639;
+            border-radius: 8px;
+            pointer-events: none;
+            font-size: 13px;
+        }
+
+        .donutSegment {
+            transition: ease;
+            transition-duration: 0.5s;
+        }
+
+        .donutSegment:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+
+        .bar:hover {
+            cursor: pointer;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 150px;
+            height: 15px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: rgb(42, 4, 131);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="PageHead">
+        <h1>University Visualization System</h1>
+    </div>
+    <br>
+    <form>
+        <input type="range" min=2014 max=2019 step=1 class="slider" id="year" style="margin-left: 80px;" value=2019
+            oninput="selected_year.value = year.value">
+        <output name="selected_year" id="selected_year"
+            style="font-style: bold; font-family: sans-serif; font-size: 25px;">2019</output>
+    </form>
+    <div id="visual">
+    </div>
+    <script src="registered_students_script.js"></script>
+</body>
+
+</html>
